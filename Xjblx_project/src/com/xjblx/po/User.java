@@ -1,34 +1,43 @@
 package com.xjblx.po;
 
 public class User {
-	private int user_id;
-	private String user_name;
-	private String password;
-	private String phonenumber;
-	public int getUser_id() {
-		return user_id;
-	}
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
-	}
-	public String getUser_name() {
-		return user_name;
-	}
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getPhonenumber() {
-		return phonenumber;
-	}
-	public void setPhonenumber(String phonenumber) {
-		this.phonenumber = phonenumber;
-	}
-	
-	
+    private String username;
+
+    private String usershowname;
+
+    private String password;
+
+    private String ismanager;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
+    }
+
+    public String getUsershowname() {
+        return usershowname;
+    }
+
+    public void setUsershowname(String usershowname) {
+        this.usershowname = usershowname == null ? null : usershowname.trim();
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
+    }
+
+    public String getIsmanager() {
+        return ismanager;
+    }
+
+    public void setIsmanager(String ismanager) {
+        this.ismanager = ismanager == null ? null : ismanager.trim();
+    }
 }

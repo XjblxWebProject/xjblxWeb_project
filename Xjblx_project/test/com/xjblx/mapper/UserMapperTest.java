@@ -17,13 +17,13 @@ public class UserMapperTest {
 
 	private ApplicationContext applicationContext;
 	
-	private UserMapper userMapper;
+	private UserCustomMapper userMapper;
 
 	//在setUp这个方法得到spring容器
 	@Before
 	public void setUp() throws Exception {
 		applicationContext = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-dao.xml");
-		userMapper = (UserMapper) applicationContext.getBean("userMapper");
+		userMapper = (UserCustomMapper) applicationContext.getBean("userMapper");
 	}
 
 	@Test
