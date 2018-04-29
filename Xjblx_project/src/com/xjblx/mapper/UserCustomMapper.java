@@ -6,7 +6,12 @@ import com.xjblx.po.UserCustom;
 import com.xjblx.po.UserQueryVo;
 
 public interface UserCustomMapper {
-	//列出用户信息
-	public List<UserCustom> ListUserInformation(UserQueryVo userQueryVo) throws Exception;
+
+	/**
+	 * @param userQueryVo
+	 * @return
+	 */
+	List<UserCustom> ListUserInformation(UserQueryVo userQueryVo);
+	
 	
 }

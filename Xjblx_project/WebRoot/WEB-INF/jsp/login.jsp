@@ -9,7 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/register.css"/>
 		<script src="${pageContext.request.contextPath }/js/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
 		<script src="${pageContext.request.contextPath }/js/register.js" type="text/javascript" charset="utf-8"></script>
-		<title>注册</title>
+		<title>登录</title>
 	</head>
 	<body id="register">
 		<div id="content">
@@ -18,7 +18,7 @@
 				<font size="5">问卷调查系统</font>
 			</div>
 			<div id="input_register">
-			<form action="${pageContext.request.contextPath }/insertUser.action" method="post">
+			<form action="${pageContext.request.contextPath }/loginCheck.action" method="post">
 				<table border="0" cellspacing="20" cellpadding="0">
 					<tr>
 						<td>用户名：</td>
@@ -28,14 +28,9 @@
 						<td>密码：</td>
 						<td><input type="password" name="password" id="passwd" placeholder="请输入密码" value="${param.password }"/>${requestScope.passwordMistake }</td>
 					</tr>
-					<tr>
-						<td>确认密码：</td>
-						<td><input type="password" name="passwordconfirm" id="passwd_confirm" placeholder="请再次输入密码" />${requestScope.passwordconfirmMistake }</td>
-					</tr>
-					
 				</table>
-				<input type="submit" name="submit" id="input_bt" value="注册" />
-				
+				<input type="submit" name="submit" id="input_bt" value="登录" />
+				<a href="${pageContext.request.contextPath }/register.action">注册</a>
 			</form>
 			</div>
 		</div>

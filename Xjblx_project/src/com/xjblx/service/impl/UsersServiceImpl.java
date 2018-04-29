@@ -16,13 +16,7 @@ public class UsersServiceImpl implements UsersService{
 	private UserCustomMapper userCustomMapper;
 	@Autowired
 	private UserMapper userMapper;
-
-	@Override
-	public List<UserCustom> ListUserInformation(UserQueryVo userQueryVo) throws Exception {
-		// TODO Auto-generated method stub
-		return userCustomMapper.ListUserInformation(userQueryVo);
-	}
-
+	
 	/* (non-Javadoc)
 	 * @see com.xjblx.service.UsersService#insertUserInformation(java.lang.String, com.xjblx.po.UserCustom)
 	 */
@@ -30,6 +24,24 @@ public class UsersServiceImpl implements UsersService{
 	public void insertUserInformation(String username, UserCustom userCustom) throws Exception {
 		// TODO Auto-generated method stub
 		userMapper.insert(userCustom);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.xjblx.service.UsersService#loginUser(java.lang.String)
+	 */
+	@Override
+	public void loginUser(String username) throws Exception {
+		// TODO Auto-generated method stub
+		userMapper.selectByPrimaryKey(username);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.xjblx.service.UsersService#selectUsername(java.lang.String, com.xjblx.po.UserCustom)
+	 */
+	@Override
+	public User selectUsername(String username, UserCustom userCustom) throws Exception {
+		// TODO Auto-generated method stub
+		return userMapper.selectByPrimaryKey(username);
 	}
 
 
