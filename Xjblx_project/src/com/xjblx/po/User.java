@@ -9,6 +9,10 @@ public class User {
 
     private String ismanager;
 
+    private String userphone;
+
+    private String useremail;
+
     public String getUsername() {
         return username;
     }
@@ -39,5 +43,21 @@ public class User {
 
     public void setIsmanager(String ismanager) {
         this.ismanager = ismanager == null ? null : ismanager.trim();
+    }
+
+    public String getUserphone() {
+        return userphone;
+    }
+
+    public void setUserphone(String userphone) {
+        this.userphone = userphone == null ? null : userphone.trim();
+    }
+
+    public String getUseremail() {
+        return useremail;
+    }
+
+    public void setUseremail(String useremail) {
+        this.useremail = useremail == null ? null : useremail.trim();
     }
 }

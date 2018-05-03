@@ -6,5 +6,11 @@
 	
 		SELECT * FROM USER;
 	</select>
-
+	
+	
+	
+	<!-- 利用名字搜索用户 -->
+  	<select id="selectUserByName" parameterType="com.xjblx.po.UserQueryVo" resultType="com.xjblx.po.UserCustom">
+  		SELECT * FROM user where user.username LIKE '%${userCustom.username}%'
+  	</select>
 </mapper>

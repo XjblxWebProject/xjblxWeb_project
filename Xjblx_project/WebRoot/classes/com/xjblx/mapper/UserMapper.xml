@@ -6,6 +6,8 @@
     <result column="usershowname" property="usershowname" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="ismanager" property="ismanager" jdbcType="VARCHAR" />
+    <result column="userphone" property="userphone" jdbcType="VARCHAR" />
+    <result column="useremail" property="useremail" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    username, usershowname, password, ismanager
+    username, usershowname, password, ismanager, userphone, useremail
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xjblx.po.UserExample" >
     select
@@ -99,9 +101,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.xjblx.po.User" >
-    insert into user (username, usershowname, password, ismanager, userphone, useremail)
+    insert into user (username, usershowname, password, 
+      ismanager, userphone, useremail
+      )
     values (#{username,jdbcType=VARCHAR}, #{usershowname,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-   		#{ismanager,jdbcType=VARCHAR}, #{userphone,jdbcType=VARCHAR}, #{useremail,jdbcType=VARCHAR})
+      #{ismanager,jdbcType=VARCHAR}, #{userphone,jdbcType=VARCHAR}, #{useremail,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.xjblx.po.User" >
     insert into user
@@ -138,10 +143,10 @@
       <if test="ismanager != null" >
         #{ismanager,jdbcType=VARCHAR},
       </if>
-      <if test="ismanager != null" >
+      <if test="userphone != null" >
         #{userphone,jdbcType=VARCHAR},
       </if>
-      <if test="ismanager != null" >
+      <if test="useremail != null" >
         #{useremail,jdbcType=VARCHAR},
       </if>
     </trim>
@@ -167,6 +172,12 @@
       <if test="record.ismanager != null" >
         ismanager = #{record.ismanager,jdbcType=VARCHAR},
       </if>
+      <if test="record.userphone != null" >
+        userphone = #{record.userphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.useremail != null" >
+        useremail = #{record.useremail,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -177,7 +188,9 @@
     set username = #{record.username,jdbcType=VARCHAR},
       usershowname = #{record.usershowname,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
-      ismanager = #{record.ismanager,jdbcType=VARCHAR}
+      ismanager = #{record.ismanager,jdbcType=VARCHAR},
+      userphone = #{record.userphone,jdbcType=VARCHAR},
+      useremail = #{record.useremail,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -194,6 +207,12 @@
       <if test="ismanager != null" >
         ismanager = #{ismanager,jdbcType=VARCHAR},
       </if>
+      <if test="userphone != null" >
+        userphone = #{userphone,jdbcType=VARCHAR},
+      </if>
+      <if test="useremail != null" >
+        useremail = #{useremail,jdbcType=VARCHAR},
+      </if>
     </set>
     where username = #{username,jdbcType=VARCHAR}
   </update>
@@ -201,7 +220,9 @@
     update user
     set usershowname = #{usershowname,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      ismanager = #{ismanager,jdbcType=VARCHAR}
+      ismanager = #{ismanager,jdbcType=VARCHAR},
+      userphone = #{userphone,jdbcType=VARCHAR},
+      useremail = #{useremail,jdbcType=VARCHAR}
     where username = #{username,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -23,4 +23,8 @@ public interface UsersService {
 		
 	//查询数据库中是否已经存在此用户名
 		public User selectUsername(String username, UserCustom userCustom) throws Exception;
+	
+	//输入用户的信息
+		public void updateUser(String username, User user) throws Exception;
+
 }

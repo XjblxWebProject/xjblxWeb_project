@@ -9,7 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/register.css"/>
 		<script src="${pageContext.request.contextPath }/js/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
 		<script src="${pageContext.request.contextPath }/js/register.js" type="text/javascript" charset="utf-8"></script>
-		<title>登录</title>
+		<title>注册</title>
 	</head>
 	<body id="register">
 		<div id="content">
@@ -18,25 +18,24 @@
 				<font size="5">问卷调查系统</font>
 			</div>
 			<div id="input_register">
-			<form action="${pageContext.request.contextPath }/loginCheck.action" method="post">
+			<form action="${pageContext.request.contextPath }/addInformation.action" method="post">
 				<table border="0" cellspacing="20" cellpadding="0">
 					<tr>
-						<td>用户名：</td>
-						<td><input type="text" name="username" id="userName" placeholder="请输入用户名" /></td>
-						<td id="userTip" width="120px"></td>
+						<td>昵称：</td>
+						<td><input type="text" name="usershowname" id="userShowName" placeholder="请输入昵称"  />${requestScope.usernameMistake }</td>
 					</tr>
 					<tr>
-						<td>密码：</td>
-						<td><input type="password" name="password" id="passwd" placeholder="请输入密码" /></td>
-						<td id="passwdTip"></td>
+						<td>电话：</td>
+						<td><input type="password" name="userphone" id="userphone" placeholder="请输入电话" />${requestScope.passwordMistake }</td>
 					</tr>
+					<tr>
+						<td>邮箱：</td>
+						<td><input type="text" name="useremail" id="userEmail" placeholder="请输入电子邮箱" />${requestScope.passwordconfirmMistake }</td>
+					</tr>
+					
 				</table>
+				<input type="submit" name="submit" id="input_bt" value="前往登录" />
 				
-				<div id="but_login">
-					<a href="${pageContext.request.contextPath }/changePassword.action" >找回密码</a>
-					<input type="submit" name="" id="input_bt" value="登录" />
-				</div>
-				<a href="${pageContext.request.contextPath }/register.action">注册</a>
 			</form>
 			</div>
 		</div>

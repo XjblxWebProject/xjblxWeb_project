@@ -43,6 +43,16 @@ public class UsersServiceImpl implements UsersService{
 		// TODO Auto-generated method stub
 		return userMapper.selectByPrimaryKey(username);
 	}
+	
+	
+	/* (non-Javadoc)
+	 * @see com.xjblx.service.UsersService#updateUser(java.lang.String, com.xjblx.po.UserCustom)
+	 */
+	@Override
+	public void updateUser(String username, User user) throws Exception {
+		// TODO Auto-generated method stub
+		userMapper.updateByPrimaryKey(user);
+	}
 
 
 	

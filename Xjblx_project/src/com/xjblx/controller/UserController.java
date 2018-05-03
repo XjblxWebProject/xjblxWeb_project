@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.xjblx.mapper.UserCustomMapper;
+import com.xjblx.mapper.UserMapper;
 import com.xjblx.po.User;
 import com.xjblx.po.UserCustom;
 import com.xjblx.po.UserQueryVo;
@@ -30,6 +32,11 @@ import com.xjblx.service.UsersService;
 public class UserController {
 	@Autowired
 	private UsersService usersService;
+	@Autowired
+	private UserMapper userMapper;
+	
+	@Autowired
+	private UserCustomMapper userCustomMapper;
 	/**
 	 * @author 张子阳
 	 * @version 1.1
@@ -71,7 +78,7 @@ public class UserController {
 			}else {
 				session.setAttribute("username", username);
 				usersService.insertUserInformation(username, userCustom);
-				return "forward:login.action";
+				return "redirect:/Information.action";
 			}
 		}
 		
@@ -115,10 +122,79 @@ public class UserController {
 			
 			}else{
 				session.setAttribute("username", username);
-				return "redirect:/show.action";
+				return "success";
 			
 			}
 		}
+	}
+	
+	/**
+	 * @author 张子阳
+	 * @version 1.1.3
+	 * @date 2018/4/29
+	 * 
+	 */
+	
+	//访问输入用户信息页面
+	@RequestMapping(value="/Information",method={RequestMethod.POST,RequestMethod.GET})
+	public String Information() throws Exception{
+		return "Aboutme";
+	}
+	//输入用户信息的页面
+	
+	@RequestMapping(value="/addInformation",method={RequestMethod.POST,RequestMethod.GET})
+	public String AddUserInformation(HttpSession session, UserCustom userCustom,HttpServletRequest request, String usershowname, String userphone, String useremail) throws Exception{
+		
+		String username = (String)session.getAttribute("username");
+		
+		User user = usersService.selectUsername(username, userCustom);
+		
+		user.setUsershowname(usershowname);
+		user.setUserphone(userphone);
+		user.setUseremail(useremail);
+		
+		usersService.updateUser(username, user);
+		
+		
+		return "success";
+		
+		
+	}
+	
+	
+	/**
+	 * @author 张子阳
+	 * @version 1.1.4
+	 * @date 2018/4/30
+	 * 
+	 */
+	
+	//忘记密码验证信息并修改密码
+	@RequestMapping(value="/changePassword",method={RequestMethod.POST,RequestMethod.GET})
+	public String changePassword(){
+		return "ChangePasswd";
+	}
+	//验证信息并修改密码
+	@RequestMapping(value="/changePasswordCheck",method={RequestMethod.POST,RequestMethod.GET})
+	public String changePasswordAndCheck(Model model, HttpServletRequest requset, HttpSession session, String userphone, String newpassword, String username,UserCustom userCustom) throws Exception{
+		
+//		String username = (String)session.getAttribute("username");
+		
+		User user = usersService.selectUsername(username, userCustom);
+		System.out.println(userphone);
+		System.out.println(user.getUserphone());
+		if(user.getUserphone().equals(userphone)){
+			user.setPassword(newpassword);
+			
+		}else{
+			model.addAttribute("phoneMistake", "验证电话错误");
+			return "forward:changePassword.action";
+		}
+		
+		usersService.updateUser(username, user);
+		return "login";
+		
+		
 	}
 	
 	

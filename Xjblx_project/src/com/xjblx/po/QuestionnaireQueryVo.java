@@ -1,7 +1,14 @@
 package com.xjblx.po;
 
 import java.util.List;
-
+/**
+ * 
+ * <p>Title: QuestionnaireQueryVo</p>
+ * <p>Description: 问卷展示的包装类</p>
+ * @author	zhangziynag
+ * @date	2018/4/29
+ * @version 1.1.1
+ */
 public class QuestionnaireQueryVo {
 	private Questionnaire questionnaire;
 	private QuestionnaireCustom questionnaireCustom;

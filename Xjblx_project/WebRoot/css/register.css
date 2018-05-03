@@ -36,9 +36,34 @@
 
 #input_bt {
 	margin-top: 30px;
+	margin-bottom: 30px;
 	font-size: 120%;
 	border-radius: 20px;
 	width: 300px;
 	background-color: #ff9800;
+}
 
+a:link { 
+	font-size: smaller; 
+	color: #000000; 
+	text-decoration: none; 
+} 
+a:visited { 
+	font-size: smaller; 
+	color: #000000; 
+	text-decoration: none; 
+} 
+a:hover { 
+	font-size: smaller; 
+	color: #999999; 
+	text-decoration: underline; 
+} 
+
+#but_login {
+	display: flex;
+	flex-direction: column;
+	margin-left: 20%;
+}
+#but_login a {
+	margin-right: -100px;
 }

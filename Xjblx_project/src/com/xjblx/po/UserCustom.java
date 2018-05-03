@@ -9,20 +9,7 @@ package com.xjblx.po;
  * @version 1.0
  */
 public class UserCustom extends User{
-	private String userphone;
-	private String useremail;
-	public String getUserphone() {
-		return userphone;
-	}
-	public void setUserphone(String userphone) {
-		this.userphone = userphone;
-	}
-	public String getUseremail() {
-		return useremail;
-	}
-	public void setUseremail(String useremail) {
-		this.useremail = useremail;
-	}
+	
 	
 	
 }

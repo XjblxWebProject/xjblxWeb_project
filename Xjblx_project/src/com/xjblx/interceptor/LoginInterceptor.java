@@ -35,7 +35,7 @@ public class LoginInterceptor implements HandlerInterceptor{
 				//判断url是否是公开 地址（实际使用时将公开 地址配置配置文件中）
 				//这里公开地址是登陆提交的地址
 				
-				if(url.indexOf("login.action") >= 0 || url.indexOf("register.action") >= 0 || url.indexOf("insertUser.action") >= 0 || url.indexOf("loginCheck.action") >= 0){
+				if(url.indexOf("login.action") >= 0 || url.indexOf("register.action") >= 0 || url.indexOf("insertUser.action") >= 0 || url.indexOf("loginCheck.action") >= 0 || url.indexOf("changePassword.action") >= 0 || url.indexOf("changePasswordCheck.action") >= 0){
 					//如果进行登陆提交，放行
 					return true;
 				}
