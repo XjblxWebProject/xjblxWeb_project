@@ -15,4 +15,5 @@
 		
 <!-- 商品管理的service -->
 <bean id="UsersService" class="com.xjblx.service.impl.UsersServiceImpl"/>
+<bean id="QuestionnairesService" class="com.xjblx.service.impl.QuestionnairesServiceImpl"></bean>
 </beans>

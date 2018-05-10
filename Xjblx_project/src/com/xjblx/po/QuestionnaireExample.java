@@ -234,6 +234,76 @@ public class QuestionnaireExample {
             return (Criteria) this;
         }
 
+        public Criteria andQuestionnairNameIsNull() {
+            addCriterion("questionnair_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionnairNameIsNotNull() {
+            addCriterion("questionnair_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionnairNameEqualTo(String value) {
+            addCriterion("questionnair_name =", value, "questionnairName");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionnairNameNotEqualTo(String value) {
+            addCriterion("questionnair_name <>", value, "questionnairName");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionnairNameGreaterThan(String value) {
+            addCriterion("questionnair_name >", value, "questionnairName");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionnairNameGreaterThanOrEqualTo(String value) {
+            addCriterion("questionnair_name >=", value, "questionnairName");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionnairNameLessThan(String value) {
+            addCriterion("questionnair_name <", value, "questionnairName");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionnairNameLessThanOrEqualTo(String value) {
+            addCriterion("questionnair_name <=", value, "questionnairName");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionnairNameLike(String value) {
+            addCriterion("questionnair_name like", value, "questionnairName");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionnairNameNotLike(String value) {
+            addCriterion("questionnair_name not like", value, "questionnairName");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionnairNameIn(List<String> values) {
+            addCriterion("questionnair_name in", values, "questionnairName");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionnairNameNotIn(List<String> values) {
+            addCriterion("questionnair_name not in", values, "questionnairName");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionnairNameBetween(String value1, String value2) {
+            addCriterion("questionnair_name between", value1, value2, "questionnairName");
+            return (Criteria) this;
+        }
+
+        public Criteria andQuestionnairNameNotBetween(String value1, String value2) {
+            addCriterion("questionnair_name not between", value1, value2, "questionnairName");
+            return (Criteria) this;
+        }
+
         public Criteria andCreatedateIsNull() {
             addCriterion("createdate is null");
             return (Criteria) this;

@@ -1,6 +1,8 @@
 package com.xjblx.controller;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -122,7 +124,7 @@ public class UserController {
 			
 			}else{
 				session.setAttribute("username", username);
-				return "success";
+				return "question";
 			
 			}
 		}
@@ -143,20 +145,55 @@ public class UserController {
 	//输入用户信息的页面
 	
 	@RequestMapping(value="/addInformation",method={RequestMethod.POST,RequestMethod.GET})
-	public String AddUserInformation(HttpSession session, UserCustom userCustom,HttpServletRequest request, String usershowname, String userphone, String useremail) throws Exception{
-		
+	public String AddUserInformation(Model model, HttpSession session, UserCustom userCustom,HttpServletRequest request, String usershowname, String userphone, String useremail) throws Exception{
+		String regEx = "^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$";
+		Pattern pattern = Pattern.compile(regEx);
+		Matcher matcher = pattern.matcher(useremail);
+		    // 字符串是否与正则表达式相匹配
+		boolean rs = matcher.matches();
 		String username = (String)session.getAttribute("username");
 		
 		User user = usersService.selectUsername(username, userCustom);
 		
-		user.setUsershowname(usershowname);
-		user.setUserphone(userphone);
-		user.setUseremail(useremail);
 		
-		usersService.updateUser(username, user);
+		if(usershowname == null || usershowname.equals("")){
+			
+			model.addAttribute("usershownameMistake", "昵称不能为空");
+			return "forward:Information.action";
+			
+		}else if(userphone == null || userphone.equals("")){
+			model.addAttribute("userphoneMistake", "用户电话不能为空");
+			return "forward:Information.action";
+		}else if(useremail == null || useremail.equals("")){
+			model.addAttribute("useremailMistake", "用户电子邮件不能为空");
+			return "forward:Information.action";
+		}else {
+			
+			if(usershowname.length()>=30){
+				model.addAttribute("usershownameMistake", "昵称长度应该小于30个字");
+				return "forward:Information.action";
+			}else if(userphone.length() != 11){
+				model.addAttribute("userphoneMistake", "手机输入格式有错");
+				return "forward:Information.action";
+				
+			}else if(rs == false){
+				model.addAttribute("useremailMistake", "用户邮箱输入格式有错");
+				return "forward:Information.action";
+				
+			}else {
+				user.setUsershowname(usershowname);
+				user.setUserphone(userphone);
+				user.setUseremail(useremail);
+				
+				usersService.updateUser(username, user);
+				
+				
+				return "success";
+			}
+			
+		}
 		
 		
-		return "success";
 		
 		
 	}
@@ -176,23 +213,60 @@ public class UserController {
 	}
 	//验证信息并修改密码
 	@RequestMapping(value="/changePasswordCheck",method={RequestMethod.POST,RequestMethod.GET})
-	public String changePasswordAndCheck(Model model, HttpServletRequest requset, HttpSession session, String userphone, String newpassword, String username,UserCustom userCustom) throws Exception{
+	public String changePasswordAndCheck(Model model, HttpServletRequest requset, HttpSession session, String userphone, String newpassword, String username, String passwordconfirm,UserCustom userCustom) throws Exception{
 		
-//		String username = (String)session.getAttribute("username");
+	
 		
-		User user = usersService.selectUsername(username, userCustom);
-		System.out.println(userphone);
-		System.out.println(user.getUserphone());
-		if(user.getUserphone().equals(userphone)){
-			user.setPassword(newpassword);
+		
+		if(username.equals("") || username == null){
+			
+			model.addAttribute("usernameMistake", "用户名不能为空");
+			return "forward:changePassword.action";
+		
+		}else if(newpassword.equals("") || newpassword == null){
+			
+			model.addAttribute("newpasswordMistake", "新的密码不能为空");
+			return "forward:changePassword.action";
+		
+		}else if(passwordconfirm.equals("") || passwordconfirm == null){
+			
+			model.addAttribute("passwordconfirmMistake", "再次输入密码不能为空");
+			return "forward:changePassword.action";
+			
+		}else if(userphone.equals("") || userphone == null){
+			
+			model.addAttribute("phoneMistake", "手机号不能为空");
+			return "forward:changePassword.action";
 			
 		}else{
-			model.addAttribute("phoneMistake", "验证电话错误");
-			return "forward:changePassword.action";
+			
+			User user = usersService.selectUsername(username, userCustom);
+			if(user == null){
+				
+				model.addAttribute("usernameMistake", "用户名不存在");
+				return "forward:changePassword.action";
+				
+			}else if(newpassword.length() < 6){
+				model.addAttribute("newpasswordMistake", "密码不能少于6位");
+				return "forward:changePassword.action";
+			}else if(!newpassword.equals(passwordconfirm)){
+				
+				model.addAttribute("passwordconfirmMistake", "两次输入的密码不同");
+				return "forward:changePassword.action";
+				
+			}else if(!user.getUserphone().equals(userphone)){
+				
+				model.addAttribute("phoneMistake", "手机号输入错误");
+				return "forward:changePassword.action";
+				
+			}else{
+				usersService.updateUser(username, user);
+				session.setAttribute("username", username);
+				return "login";
+			}
 		}
 		
-		usersService.updateUser(username, user);
-		return "login";
+		
 		
 		
 	}

@@ -32,18 +32,18 @@
 				<table border="0" cellspacing="50" cellpadding="">
 					<tr>
 						<td>昵称：</td>
-						<td><input type="text" name="usershowname" id="userShouName" value="" /></td>
-						<td width="120px"></td>
+						<td><input type="text" name="usershowname" id="userShouName" value="${param.usershowname }" /></td>
+						<td width="120px" style="color:red;font-size:x-small;">${requestScope.usershownameMistake }</td>
 					</tr>
 					<tr>
 						<td>电话：</td>
-						<td><input type="text" name="userphone" id="userPhone" value="" /></td>
-						<td width="120px"></td>
+						<td><input type="text" name="userphone" id="userPhone" value="${param.userphone }" /></td>
+						<td width="120px" style="color:red;font-size:x-small;">${requestScope.userphoneMistake }</td>
 					</tr>
 					<tr>
 						<td>电子邮件：</td>
-						<td><input type="text" name="useremail" id="UserEmail" value="" /></td>
-						<td width="120px"></td>
+						<td><input type="text" name="useremail" id="UserEmail" value="${param.useremail }" /></td>
+						<td width="120px" style="color:red;font-size:x-small;">${requestScope.useremailMistake }</td>
 					</tr>
 				</table>
 				<table border="0" cellspacing="50" cellpadding="">

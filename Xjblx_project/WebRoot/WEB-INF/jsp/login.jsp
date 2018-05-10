@@ -22,13 +22,15 @@
 				<table border="0" cellspacing="20" cellpadding="0">
 					<tr>
 						<td>用户名：</td>
-						<td><input type="text" name="username" id="userName" placeholder="请输入用户名" /></td>
-						<td id="userTip" width="120px"></td>
+						<td><input type="text" name="username" id="userName" placeholder="请输入用户名" value="${param.username }"/></td>
+						<td id="userTip" width="120px">${requestScope.usernameMistake }</td>
+			
 					</tr>
 					<tr>
 						<td>密码：</td>
 						<td><input type="password" name="password" id="passwd" placeholder="请输入密码" /></td>
-						<td id="passwdTip"></td>
+						<td id="passwdTip">${requestScope.passwordMistake }</td>
+					
 					</tr>
 				</table>
 				

@@ -1,33 +1,53 @@
 package com.xjblx.po;
 
 public class QuestionnaireCreate {
-    private Integer id;
+    private String username;
 
-    private String tablename;
+    private String questionnairName;
 
-    private String tablequestion;
+    private String questionnairQuestion;
 
-    public Integer getId() {
-        return id;
+    private String questionnairChoice;
+
+    private Integer questionnairType;
+
+    public String getUsername() {
+        return username;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
-    public String getTablename() {
-        return tablename;
+    public String getQuestionnairName() {
+        return questionnairName;
     }
 
-    public void setTablename(String tablename) {
-        this.tablename = tablename == null ? null : tablename.trim();
+    public void setQuestionnairName(String questionnairName) {
+        this.questionnairName = questionnairName == null ? null : questionnairName.trim();
     }
 
-    public String getTablequestion() {
-        return tablequestion;
+    public String getQuestionnairQuestion() {
+        return questionnairQuestion;
     }
 
-    public void setTablequestion(String tablequestion) {
-        this.tablequestion = tablequestion == null ? null : tablequestion.trim();
+    public void setQuestionnairQuestion(String questionnairQuestion) {
+        this.questionnairQuestion = questionnairQuestion == null ? null : questionnairQuestion.trim();
+    }
+
+    public String getQuestionnairChoice() {
+        return questionnairChoice;
+    }
+
+    public void setQuestionnairChoice(String questionnairChoice) {
+        this.questionnairChoice = questionnairChoice == null ? null : questionnairChoice.trim();
+    }
+
+    public Integer getQuestionnairType() {
+        return questionnairType;
+    }
+
+    public void setQuestionnairType(Integer questionnairType) {
+        this.questionnairType = questionnairType;
     }
 }

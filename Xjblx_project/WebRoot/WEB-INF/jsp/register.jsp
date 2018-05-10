@@ -22,15 +22,18 @@
 				<table border="0" cellspacing="20" cellpadding="0">
 					<tr>
 						<td>用户名：</td>
-						<td><input type="text" name="username" id="userName" placeholder="请输入用户名" value="${param.username }" />${requestScope.usernameMistake }</td>
+						<td><input type="text" name="username" id="userName" placeholder="请输入用户名" value="${param.username }" /></td>
+						<td width="130px;">${requestScope.usernameMistake }</td>
 					</tr>
 					<tr>
 						<td>密码：</td>
-						<td><input type="password" name="password" id="passwd" placeholder="请输入密码" value="${param.password }"/>${requestScope.passwordMistake }</td>
+						<td><input type="password" name="password" id="passwd" placeholder="请输入密码" value="${param.password }"/></td>
+						<td width="130px;">${requestScope.passwordMistake }</td>
 					</tr>
 					<tr>
 						<td>确认密码：</td>
-						<td><input type="password" name="passwordconfirm" id="passwd_confirm" placeholder="请再次输入密码" />${requestScope.passwordconfirmMistake }</td>
+						<td><input type="password" name="passwordconfirm" id="passwd_confirm" placeholder="请再次输入密码" /></td>
+						<td width="130px;">${requestScope.passwordconfirmMistake }</td>
 					</tr>
 					
 				</table>

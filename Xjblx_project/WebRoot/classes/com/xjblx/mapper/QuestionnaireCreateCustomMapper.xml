@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xjblx.mapper.QuestionnaireCreateCustomMapper">
+ <resultMap id="BaseResultMap" type="com.xjblx.po.QuestionnaireCreate" >
+    <id column="username" property="username" jdbcType="VARCHAR" />
+    <result column="questionnair_name" property="questionnairName" jdbcType="VARCHAR" />
+    <result column="questionnair_question" property="questionnairQuestion" jdbcType="VARCHAR" />
+    <result column="questionnair_choice" property="questionnairChoice" jdbcType="VARCHAR" />
+    <result column="questionnair_type" property="questionnairType" jdbcType="INTEGER" />
+  </resultMap>
+	<select id="selectQuestionnaireByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+		SELECT * FROM questionnaire_create WHERE questionnair_name = #{questionnaireCreateCustom.questionnairName}
+	
+	</select>
+	
+	<select id="selectQuestionnaireChoiceByQuestion" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT questionnair_choice FROM questionnaire_create WHERE questionnair_question= #{questionnaireCreateCustom.questionnairQuestion}
+	
+	</select>
+
+</mapper>

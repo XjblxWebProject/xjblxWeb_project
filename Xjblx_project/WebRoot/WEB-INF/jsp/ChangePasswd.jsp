@@ -32,23 +32,23 @@
 				<table border="0" cellspacing="50" cellpadding="">
 					<tr>
 						<td>账号：</td>
-						<td><input type="text" name="username" id="username" value="" /></td>
-						<td width="120px"style="color: red;">*</td>
+						<td style="color:red;"><input type="text" name="username" id="username" value="${param.username }" />*</td>
+						<td width="120px" style="color:red;font-size:x-small;">${requestScope.usernameMistake }</td>
 					</tr>
 					<tr>
 						<td>新密码：</td>
-						<td><input type="text" name="newpassword" id="userPhone" value="" /></td>
-						<td width="120px"style="color: red;">*</td>
+						<td style="color:red;"><input type="password" name="newpassword" id="userPhone" value="" />*</td>
+						<td width="120px" style="color:red;font-size:x-small;">${requestScope.newpasswordMistake }</td>
 					</tr>
 					<tr>
 						<td>再次输入：</td>
-						<td><input type="text" name="passwordconfirm" id="UserEmail" value="" /></td>
-						<td width="120px"style="color: red;">*</td>
+						<td style="color:red;"><input type="password" name="passwordconfirm" id="UserEmail" value="" />*</td>
+						<td width="20px" style="color:red;font-size:x-small;">${requestScope.passwordconfirmMistake }</td>
 					</tr>
 					<tr>
 						<td>验证手机：</td>
-						<td><input type="text" name="userphone" id="UserEmail" value="" /></td>
-						<td width="120px"style="color: red;">*</td>
+						<td style="color:red;"><input type="text" name="userphone" id="UserEmail" value="" />*</td>
+						<td width="20px" style="color:red;font-size:x-small;">${requestScope.phoneMistake }</td>
 					</tr>
 				</table>
 				<span id="">
