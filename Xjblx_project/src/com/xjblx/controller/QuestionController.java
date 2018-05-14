@@ -20,6 +20,8 @@ import com.xjblx.po.Questionnaire;
 import com.xjblx.po.QuestionnaireCreate;
 import com.xjblx.service.QuestionnairesService;
 
+import net.sf.json.JSONArray;
+
 @Controller
 public class QuestionController {
 	
@@ -82,21 +84,22 @@ public class QuestionController {
 	@RequestMapping(value="/showQuestionnaire",method={RequestMethod.POST,RequestMethod.GET})
 	public String showQuestionnaire(Model model, HttpServletRequest request, HttpSession session) throws Exception{
 		String questionnair_name = (String)session.getAttribute("questionnair_name");
+		
 		List<QuestionnaireCreate> questionnaireList = questionnairesService.selectQuestionnaireByName(questionnair_name);
 		List<String> questionnaireChoiceList = new ArrayList<>();
+		
 		for(int i = 0; i < questionnaireList.size(); i ++){
-			String[] strarr = questionnaireList.get(i).getQuestionnairChoice().split(",");
-			if(strarr.equals("") || strarr == null){
-				break;
-			}
-			for (String string : strarr) {
-				questionnaireChoiceList.add(string); 
-			}
+			
+			
+				questionnaireChoiceList.add(questionnaireList.get(i).getQuestionnairChoice()); 
+			
 		}
+		String sss = JSONArray.fromObject(questionnaireList).toString();
+		model.addAttribute("sss", sss);
 		model.addAttribute("questionnaireList", questionnaireList);
 		model.addAttribute("questionnaireChoiceList", questionnaireChoiceList);
 		
-		
+		System.out.println(questionnaireChoiceList.get(0));
 		return "showquestion";
 	}
 	
