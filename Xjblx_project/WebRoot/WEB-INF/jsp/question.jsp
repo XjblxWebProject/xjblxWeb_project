@@ -10,7 +10,7 @@
 </head>
 <body>
 	<form action="${pageContext.request.contextPath }/questionInsert.action" method="post">
-		调查名称<input type="text" name="questionnair_name" >
+		调查名称<input type="text" name="questionnair_name" >${requestScope.questionnairnameMistake }
 		<input type="submit" value="创建问卷">
 	
 	</form>

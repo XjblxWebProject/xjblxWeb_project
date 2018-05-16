@@ -124,7 +124,7 @@ public class UserController {
 			
 			}else{
 				session.setAttribute("username", username);
-				return "question";
+				return "forward:showQuestionnairewithuser.action";
 			
 			}
 		}
@@ -188,7 +188,7 @@ public class UserController {
 				usersService.updateUser(username, user);
 				
 				
-				return "success";
+				return "redirect:showQuestionnairewithuser.action";
 			}
 			
 		}
@@ -211,13 +211,16 @@ public class UserController {
 	public String changePassword(){
 		return "ChangePasswd";
 	}
+	//修改密码
+	@RequestMapping(value="/changePassword2",method={RequestMethod.POST,RequestMethod.GET})
+	public String changePassword2(){
+		return "ChangePasswd2";
+	}
 	//验证信息并修改密码
 	@RequestMapping(value="/changePasswordCheck",method={RequestMethod.POST,RequestMethod.GET})
 	public String changePasswordAndCheck(Model model, HttpServletRequest requset, HttpSession session, String userphone, String newpassword, String username, String passwordconfirm,UserCustom userCustom) throws Exception{
 		
-	
-		
-		
+
 		if(username.equals("") || username == null){
 			
 			model.addAttribute("usernameMistake", "用户名不能为空");
@@ -260,15 +263,28 @@ public class UserController {
 				return "forward:changePassword.action";
 				
 			}else{
+				user.setPassword(newpassword);
 				usersService.updateUser(username, user);
 				session.setAttribute("username", username);
 				return "login";
 			}
 		}
 		
+	}
+	
+	//展示个人中心
+	@RequestMapping(value="/showPersonCenter",method={RequestMethod.POST,RequestMethod.GET})
+	public String showPersonCenter(HttpSession session) throws Exception{
+		String username = (String)session.getAttribute("username");
+		User user = usersService.selectUserByUsername(username);
+		String usershowname = user.getUsershowname();
+		String userphone = user.getUserphone();
+		String useremail = user.getUseremail();
+		session.setAttribute("usershowname", usershowname);
+		session.setAttribute("userphone", userphone);
+		session.setAttribute("useremail", useremail);
 		
-		
-		
+		return "personCenter";
 	}
 	
 	

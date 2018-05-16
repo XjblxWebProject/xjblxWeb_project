@@ -44,7 +44,7 @@ public class QuestionnaireCreateCustomMapperTest {
 	public void testSelectQuestionnaireByName() throws Exception{
 	
 		List<QuestionnaireCreate> questionnaire = new ArrayList<>();
-		questionnaire = questionnaireCreateCustomMapper.selectQuestionnaireByName("helloworld");
+		questionnaire = questionnaireCreateCustomMapper.selectQuestionnaireByName("zhangziyang", "helloworld");
 		for(int i = 0; i < questionnaire.size(); i ++){
 			System.out.println(questionnaire.get(i).getQuestionnairQuestion());
 		}

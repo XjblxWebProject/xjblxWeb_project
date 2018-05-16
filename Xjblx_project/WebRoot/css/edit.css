@@ -1,0 +1,401 @@
+div{
+	display:block;
+	overflow: hidden;
+}
+body,ul,li{
+	padding: 0px;
+	margin: 0px;
+	color: #6a6a6a;
+}
+body{
+	background-color: rgb(247,247,250);
+	font-size: 12px;
+}
+ul li{
+	list-style: none;
+	border: none;
+}
+/*头部分*/
+#header{
+	position: fixed;
+	top:0;left:0; width:100%;
+	/*margin: 0px auto 0px auto;*/
+	background-color: rgb(237,234,228);
+	height: 55px;
+}
+#headMenu{
+	overflow: hidden;
+	width: 1100px;
+	margin: 0px auto 0px auto;
+}
+#headMenu img{
+	float: left;
+	width: 50px;
+	height: 50px;
+}
+#headMenuButton{
+	float: right;
+	height: 55px;
+	padding-top: 10px;
+}
+#save{
+	background-color: rgb(163,131,131);
+	border-color: rgb(163,131,131);
+	color: white;
+	box-sizing: content-box;
+	border: none;
+	/*padding: 0px 22px;*/
+	height: 30px;
+	width: 80px;
+	margin-right: 10px;
+	cursor: pointer;
+	border-radius: 10px;
+}
+#cancel{
+	background: transparent;
+	border: 1px solid rgb(163,131,131);
+	color: rgb(163,131,131);
+	box-sizing: content-box;
+	border-radius:2px ;
+	/*padding: 0px 22px;*/
+	height: 30px;
+	width: 80px;
+	cursor: pointer;
+	border-radius: 10px;
+}
+
+/*问卷按钮*/
+#content{
+	overflow: hidden;
+	padding-top: 55px;
+	width: 1100px;
+	margin: 0px auto 0px auto;
+}
+#contentButton{
+	padding-top: 20px;
+	position: fixed;
+	background-color: white;
+}
+#contentButton li{
+	float: left;
+	width: 9.5%;
+	height: 30px;
+	padding-top: 5px;
+	margin: 1px;
+	border: 1px solid gainsboro;
+	text-align: center;
+	border-radius: 10px;
+	
+}
+#contentButton ul{
+	overflow: hidden;
+	width: 1100px;
+	padding-bottom: 10px;
+}
+#contentButton img{
+	width: 20px;
+	height: 20px;
+}
+#contentButton a{
+	color: black;
+	text-decoration: none;
+}
+#line{
+	margin-top: 0px;
+	height: 28px;
+	width: 100%;
+    color: #3b3b3b;
+    border-top: 1px solid #aaa;
+}
+/*问卷内容*/
+#survey{
+	background-color: white;
+	padding-top: 120px;
+	overflow: hidden;
+}
+#surveyHead a{
+	color: black;
+	text-decoration: none;
+	padding-right: 20px;
+	font-weight: bold;
+	font-size: 20px;
+}
+#surveyHead{
+	display: block
+	width: 1100px;
+	text-align: center;
+}
+#title{
+	font-size: 20px;
+	font-weight: 300;
+	height: 40px;
+	width: 500px;
+    margin-top: 5px;
+    padding: 3px;
+    line-height: 1.62;
+    border-radius: 5px;
+    border: 1px solid gainsboro;
+}
+#surveyDescribe textarea{
+	font-size: 13px;
+    line-height: 1.62;
+    height: 35px;
+    width: 80%;
+    margin-top: 5px;
+    padding: 3px;
+    border: none;
+    resize: none;
+    margin: 0px auto 0px auto;
+}
+#surveyDescribe{
+	width: 80%;
+	margin: 0px auto 0px auto;
+}
+#surveyDescribe a{
+	margin: 0px auto 0px auto;
+}
+#line2{
+	margin-top: 20px;
+	height: 28px;
+	width: 80%;
+    color: #3b3b3b;
+    border-top: 2px dashed #aaa;
+    margin: 0px auto 0px auto;
+}
+/*问题设置*/
+#questions{
+	margin: 0px auto 0px auto;
+	width: 80%;
+}
+.question{
+	margin: 5px 0 0;
+    outline: none;
+    padding: 8px;
+    border: 1px solid #fff;
+}
+.quesTitleAll{
+	padding-top: 2px;
+    font-size: 15px;
+    color: #444444;
+    font-weight: bold;
+    height: auto;
+    line-height: 20px;
+}
+.topic_quesTitle{
+	width: 28px;
+    float: left;
+}
+.quesRadio{
+	padding-top: 0px;
+	clear: both;
+    padding-left: 24px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #EFEFEF;
+    font-size: 15px;
+    color: #333333;
+}
+.quesRadio_clear_top{
+	clear: both;
+    margin-top: 4px;
+}
+.quesRadio_clear_bottom{
+	clear: both;
+    margin-bottom: 10px
+}
+.radio{
+	background: transparent url(../img/radio.png) no-repeat; 
+	vertical-align: middle;
+    height: 16px;
+    width: 18px;
+    font-size: 10px;
+    display: inline-block;
+    top: 6px;
+}
+.quesSpanLeft{
+	padding-top: 8px;
+    color: #666666;
+    padding-left: 20px;
+    line-height: 18px;
+    float: left;
+}
+.newQues{
+	text-decoration: underline;
+    FONT-FAMILY: sans-serif,'宋体';
+	color: #ff6600;
+}
+.quesSpanRight{
+	overflow: -webkit-paged-x;
+	float: right;
+	padding-top: 8px;
+	line-height: 18px;
+}
+.stuff{
+	font-size: 12px;
+    FLOAT: left;
+    height: 23px;
+    line-height: 23px;
+}
+.stuff li{
+	border: 1px solid #ff9900;
+	float: left;
+    vertical-align: middle;
+    text-align: center;
+    margin: 0px 4px;
+    border-radius: 4px;
+}
+.stuff a{
+	vertical-align: bottom;
+    DISPLAY: inline-block;
+    margin: 0;
+    cursor: pointer;
+    COLOR: #6d6e71;
+    text-decoration: none;
+    padding-right: 6px;
+    padding-left: 6px;
+}
+.desin_edit_ico{
+	vertical-align: middle;
+    display: inline-block;
+    background-image: url(../img/edit.png);
+    background-repeat: no-repeat;
+    overflow: hidden;
+    height: 16px;
+    width: 17px;
+    margin: 0 3px 0 0;
+}
+
+/*问题编辑*/
+.div_title_attr_question{
+	background: none repeat scroll 0 0 #eff9fe;
+    margin: 10px 0;
+    border: 0;
+    padding-top: 15px;
+    font-size: 14px;
+    visibility: hidden;
+}
+.spanLeft{
+	float: left;
+}
+
+.tableoption{
+	padding: 0px;
+    background: none;
+}
+.design-icon{
+	background-image: url(../img/icoall.png);
+	background-repeat: no-repeat;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+    height: 16px;
+    width: 17px;
+    margin: 0 3px 0 0;
+}
+.design-ctext{
+	
+    background-position: -82px -77px;
+    width: 12px;
+    height: 14px;
+    margin-left: 5px;
+}
+.choicetxt{
+	height: 18px;
+    padding: 2px 3px;
+    font-size: 14px;
+    border: solid 1px #cdcdcd;
+}
+.choiceimg{
+	cursor: pointer;
+	margin: 0 3px 2px;
+    vertical-align: bottom;
+}
+.design-img{
+	background-position: -52px -221px;
+    height: 17px;
+    width: 19px;
+}
+.design-desc{
+	    background-position: -90px -219px;
+    height: 22px;
+    width: 18px;
+}
+.checkbox{
+	cursor: pointer;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+.link-666{
+	color: #666666;
+    text-decoration: none;
+}
+.design-add{
+	background-position: -49px -113px;
+    width: 20px;
+    height: 20px;
+}
+.design-minus{
+    background-position: -72px -113px;
+    width: 20px;
+    height: 20px;
+}
+.design-cup{
+	background-position: -120px -113px;
+    width: 20px;
+    height: 20px;
+}
+.design-cdown{
+	background-position: -96px -113px;
+    width: 20px;
+    height: 20px;
+}
+
+.tableoption tr{
+	height: 31px;
+}
+input button{
+	    font-family: "微软雅黑","Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+}
+.link-U00a6e6{
+	color: #0095da;
+    font-size: 14px;
+    text-decoration: underline;
+}
+.design-singleadd{
+	background-position: -79px -327px;
+    width: 20px;
+    height: 17px;
+    margin: 0 5px 1px 0;
+}
+a.batchadd{
+	color: #4aa103;
+    text-decoration: none;
+}
+.design-badd{
+	background-position: -55px -326px;
+    height: 17px;
+    width: 20px;
+    margin: 0 5px 1px 0;
+}
+input.submitbutton{
+	display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    border: 0;
+    cursor: pointer;
+    background: #f17819;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 0 15px;
+    overflow: visible;
+}
+.questionMouseout{
+	
+}
+.questionMouseover{
+	
+}
+.design-delete{
+	background-position: -167px -43px;
+}

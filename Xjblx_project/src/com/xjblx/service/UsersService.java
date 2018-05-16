@@ -26,5 +26,8 @@ public interface UsersService {
 	
 	//输入用户的信息
 		public void updateUser(String username, User user) throws Exception;
+		
+    //展示用户具体信息的
+		public User selectUserByUsername(String username)throws Exception;
 
 }

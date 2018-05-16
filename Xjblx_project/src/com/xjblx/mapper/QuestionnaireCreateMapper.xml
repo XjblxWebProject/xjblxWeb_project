@@ -7,6 +7,8 @@
     <result column="questionnair_question" property="questionnairQuestion" jdbcType="VARCHAR" />
     <result column="questionnair_choice" property="questionnairChoice" jdbcType="VARCHAR" />
     <result column="questionnair_type" property="questionnairType" jdbcType="INTEGER" />
+    <result column="choicenum" property="choicenum" jdbcType="INTEGER" />
+    <result column="eachchoicenum" property="eachchoicenum" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +69,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    username, questionnair_name, questionnair_question, questionnair_choice, questionnair_type
+    username, questionnair_name, questionnair_question, questionnair_choice, questionnair_type, 
+    choicenum, eachchoicenum
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xjblx.po.QuestionnaireCreateExample" >
     select
@@ -101,9 +104,11 @@
   </delete>
   <insert id="insert" parameterType="com.xjblx.po.QuestionnaireCreate" >
     insert into questionnaire_create (username, questionnair_name, questionnair_question, 
-      questionnair_choice, questionnair_type)
+      questionnair_choice, questionnair_type, choicenum, 
+      eachchoicenum)
     values (#{username,jdbcType=VARCHAR}, #{questionnairName,jdbcType=VARCHAR}, #{questionnairQuestion,jdbcType=VARCHAR}, 
-      #{questionnairChoice,jdbcType=VARCHAR}, #{questionnairType,jdbcType=INTEGER})
+      #{questionnairChoice,jdbcType=VARCHAR}, #{questionnairType,jdbcType=INTEGER}, #{choicenum,jdbcType=INTEGER}, 
+      #{eachchoicenum,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.xjblx.po.QuestionnaireCreate" >
     insert into questionnaire_create
@@ -123,6 +128,12 @@
       <if test="questionnairType != null" >
         questionnair_type,
       </if>
+      <if test="choicenum != null" >
+        choicenum,
+      </if>
+      <if test="eachchoicenum != null" >
+        eachchoicenum,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="username != null" >
@@ -139,6 +150,12 @@
       </if>
       <if test="questionnairType != null" >
         #{questionnairType,jdbcType=INTEGER},
+      </if>
+      <if test="choicenum != null" >
+        #{choicenum,jdbcType=INTEGER},
+      </if>
+      <if test="eachchoicenum != null" >
+        #{eachchoicenum,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -166,6 +183,12 @@
       <if test="record.questionnairType != null" >
         questionnair_type = #{record.questionnairType,jdbcType=INTEGER},
       </if>
+      <if test="record.choicenum != null" >
+        choicenum = #{record.choicenum,jdbcType=INTEGER},
+      </if>
+      <if test="record.eachchoicenum != null" >
+        eachchoicenum = #{record.eachchoicenum,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -177,7 +200,9 @@
       questionnair_name = #{record.questionnairName,jdbcType=VARCHAR},
       questionnair_question = #{record.questionnairQuestion,jdbcType=VARCHAR},
       questionnair_choice = #{record.questionnairChoice,jdbcType=VARCHAR},
-      questionnair_type = #{record.questionnairType,jdbcType=INTEGER}
+      questionnair_type = #{record.questionnairType,jdbcType=INTEGER},
+      choicenum = #{record.choicenum,jdbcType=INTEGER},
+      eachchoicenum = #{record.eachchoicenum,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -197,6 +222,12 @@
       <if test="questionnairType != null" >
         questionnair_type = #{questionnairType,jdbcType=INTEGER},
       </if>
+      <if test="choicenum != null" >
+        choicenum = #{choicenum,jdbcType=INTEGER},
+      </if>
+      <if test="eachchoicenum != null" >
+        eachchoicenum = #{eachchoicenum,jdbcType=VARCHAR},
+      </if>
     </set>
     where username = #{username,jdbcType=VARCHAR}
   </update>
@@ -205,7 +236,9 @@
     set questionnair_name = #{questionnairName,jdbcType=VARCHAR},
       questionnair_question = #{questionnairQuestion,jdbcType=VARCHAR},
       questionnair_choice = #{questionnairChoice,jdbcType=VARCHAR},
-      questionnair_type = #{questionnairType,jdbcType=INTEGER}
+      questionnair_type = #{questionnairType,jdbcType=INTEGER},
+      choicenum = #{choicenum,jdbcType=INTEGER},
+      eachchoicenum = #{eachchoicenum,jdbcType=VARCHAR}
     where username = #{username,jdbcType=VARCHAR}
   </update>
 </mapper>

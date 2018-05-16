@@ -443,6 +443,136 @@ public class QuestionnaireCreateExample {
             addCriterion("questionnair_type not between", value1, value2, "questionnairType");
             return (Criteria) this;
         }
+
+        public Criteria andChoicenumIsNull() {
+            addCriterion("choicenum is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoicenumIsNotNull() {
+            addCriterion("choicenum is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoicenumEqualTo(Integer value) {
+            addCriterion("choicenum =", value, "choicenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoicenumNotEqualTo(Integer value) {
+            addCriterion("choicenum <>", value, "choicenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoicenumGreaterThan(Integer value) {
+            addCriterion("choicenum >", value, "choicenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoicenumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("choicenum >=", value, "choicenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoicenumLessThan(Integer value) {
+            addCriterion("choicenum <", value, "choicenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoicenumLessThanOrEqualTo(Integer value) {
+            addCriterion("choicenum <=", value, "choicenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoicenumIn(List<Integer> values) {
+            addCriterion("choicenum in", values, "choicenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoicenumNotIn(List<Integer> values) {
+            addCriterion("choicenum not in", values, "choicenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoicenumBetween(Integer value1, Integer value2) {
+            addCriterion("choicenum between", value1, value2, "choicenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoicenumNotBetween(Integer value1, Integer value2) {
+            addCriterion("choicenum not between", value1, value2, "choicenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andEachchoicenumIsNull() {
+            addCriterion("eachchoicenum is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEachchoicenumIsNotNull() {
+            addCriterion("eachchoicenum is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEachchoicenumEqualTo(String value) {
+            addCriterion("eachchoicenum =", value, "eachchoicenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andEachchoicenumNotEqualTo(String value) {
+            addCriterion("eachchoicenum <>", value, "eachchoicenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andEachchoicenumGreaterThan(String value) {
+            addCriterion("eachchoicenum >", value, "eachchoicenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andEachchoicenumGreaterThanOrEqualTo(String value) {
+            addCriterion("eachchoicenum >=", value, "eachchoicenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andEachchoicenumLessThan(String value) {
+            addCriterion("eachchoicenum <", value, "eachchoicenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andEachchoicenumLessThanOrEqualTo(String value) {
+            addCriterion("eachchoicenum <=", value, "eachchoicenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andEachchoicenumLike(String value) {
+            addCriterion("eachchoicenum like", value, "eachchoicenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andEachchoicenumNotLike(String value) {
+            addCriterion("eachchoicenum not like", value, "eachchoicenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andEachchoicenumIn(List<String> values) {
+            addCriterion("eachchoicenum in", values, "eachchoicenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andEachchoicenumNotIn(List<String> values) {
+            addCriterion("eachchoicenum not in", values, "eachchoicenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andEachchoicenumBetween(String value1, String value2) {
+            addCriterion("eachchoicenum between", value1, value2, "eachchoicenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andEachchoicenumNotBetween(String value1, String value2) {
+            addCriterion("eachchoicenum not between", value1, value2, "eachchoicenum");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

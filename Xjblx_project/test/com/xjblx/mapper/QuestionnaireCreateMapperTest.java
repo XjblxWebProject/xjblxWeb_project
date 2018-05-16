@@ -34,7 +34,7 @@ public class QuestionnaireCreateMapperTest {
 	@Test
 	public void testSelectByPrimaryKey() {
 		QuestionnaireCreate questionnaireCreate = new QuestionnaireCreate();
-		questionnaireCreate = questionnaireCreateMapper.selectByPrimaryKey("2");
+		questionnaireCreate = questionnaireCreateMapper.selectByPrimaryKey("123");
 		System.out.println(questionnaireCreate);
 	}
 

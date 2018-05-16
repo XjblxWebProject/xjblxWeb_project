@@ -8,14 +8,45 @@
     <result column="questionnair_choice" property="questionnairChoice" jdbcType="VARCHAR" />
     <result column="questionnair_type" property="questionnairType" jdbcType="INTEGER" />
   </resultMap>
-	<select id="selectQuestionnaireByName" parameterType="java.lang.String" resultMap="BaseResultMap">
-		SELECT * FROM questionnaire_create WHERE questionnair_name = #{questionnaireCreateCustom.questionnairName}
-	
+	<select id="selectQuestionnaireByName"   resultMap="BaseResultMap">
+		SELECT * FROM questionnaire_create WHERE username = #{0} and questionnair_name = #{1}
+		
 	</select>
 	
 	<select id="selectQuestionnaireChoiceByQuestion" parameterType="java.lang.String" resultType="java.lang.String">
-		SELECT questionnair_choice FROM questionnaire_create WHERE questionnair_question= #{questionnaireCreateCustom.questionnairQuestion}
+		SELECT questionnair_choice FROM questionnaire_create WHERE questionnair_question= #{questionnaireCreateCustom.questionnairQuestion} 
 	
 	</select>
-
+	
+	<update id="updateByPrimaryKeySelective" parameterType="com.xjblx.po.QuestionnaireCreate" >
+    update questionnaire_create
+    <set >
+      <if test="questionnairName != null" >
+        questionnair_name = #{questionnairName,jdbcType=VARCHAR},
+      </if>
+      <if test="questionnairQuestion != null" >
+        questionnair_question = #{questionnairQuestion,jdbcType=VARCHAR},
+      </if>
+      <if test="questionnairChoice != null" >
+        questionnair_choice = #{questionnairChoice,jdbcType=VARCHAR},
+      </if>
+      <if test="questionnairType != null" >
+        questionnair_type = #{questionnairType,jdbcType=INTEGER},
+      </if>
+      <if test="choicenum != null" >
+        choicenum = #{choicenum,jdbcType=INTEGER},
+      </if>
+      <if test="eachchoicenum != null" >
+        eachchoicenum = #{eachchoicenum,jdbcType=VARCHAR},
+      </if>
+    </set>
+      where username = #{username,jdbcType=VARCHAR} and questionnair_name = #{questionnairName,jdbcType=VARCHAR} and 
+    questionnair_question = #{questionnairQuestion,jdbcType=VARCHAR} 
+  </update>
+	
+	
+	<delete id="deleteQuestionnaireCreate" >
+		delete from questionnaire_create where username = #{0} and questionnair_name = #{1}
+	
+	</delete>
 </mapper>

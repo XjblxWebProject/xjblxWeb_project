@@ -13,7 +13,6 @@ package com.xjblx.po;
  * @version 
  */
 public class QuestionnaireCreateQueryVo {
-	
 	private QuestionnaireCreate questionnaireCreate;
 	private QuestionnaireCreateCustom questionnaireCreateCustom;
 	public QuestionnaireCreate getQuestionnaireCreate() {
@@ -28,7 +27,5 @@ public class QuestionnaireCreateQueryVo {
 	public void setQuestionnaireCreateCustom(QuestionnaireCreateCustom questionnaireCreateCustom) {
 		this.questionnaireCreateCustom = questionnaireCreateCustom;
 	}
-	
-	
 	
 }

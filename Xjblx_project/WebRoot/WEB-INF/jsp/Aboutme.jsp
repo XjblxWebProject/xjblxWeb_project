@@ -13,18 +13,8 @@
 	</head>
 	<body>
 		<div id="banner">
-			<img src="img/logo.png"/>
-			<ul class="choose">
-				<li><a href="">我的问卷</a></li>
-				<li><a href="">发布问卷</a></li>
-				<li>
-					<a href="#" id="myaccout"><font>${requestrequestScope.username }</font>的账号</a>
-					<ul id="about">
-						<li><a href="#">个人中心</a></li>
-						<li><a href="ChangePasswd.html">修改密码</a></li>
-					</ul>
-				</li>
-			</ul>
+			<img src="img/logo2.png"/>
+			
 		</div>
 		<div id="message">
 			<div id="table_message">

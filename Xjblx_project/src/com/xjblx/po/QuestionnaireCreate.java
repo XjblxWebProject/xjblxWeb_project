@@ -3,13 +3,17 @@ package com.xjblx.po;
 public class QuestionnaireCreate {
     private String username;
 
-    private String questionnairName;
+    public String questionnairName;
 
     private String questionnairQuestion;
 
     private String questionnairChoice;
 
     private Integer questionnairType;
+
+    private Integer choicenum;
+
+    private String eachchoicenum;
 
     public String getUsername() {
         return username;
@@ -49,5 +53,21 @@ public class QuestionnaireCreate {
 
     public void setQuestionnairType(Integer questionnairType) {
         this.questionnairType = questionnairType;
+    }
+
+    public Integer getChoicenum() {
+        return choicenum;
+    }
+
+    public void setChoicenum(Integer choicenum) {
+        this.choicenum = choicenum;
+    }
+
+    public String getEachchoicenum() {
+        return eachchoicenum;
+    }
+
+    public void setEachchoicenum(String eachchoicenum) {
+        this.eachchoicenum = eachchoicenum == null ? null : eachchoicenum.trim();
     }
 }

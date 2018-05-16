@@ -1,0 +1,14 @@
+body {
+	background-color: rgb(247,247,250);
+}
+
+#showSurvey {
+	background-color: white;
+	overflow: hidden;
+	padding-top: 20px;
+	width: 1100px;
+	margin: 0px auto 0px auto;
+}
+.que {
+	list-style-type: none;
+}

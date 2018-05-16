@@ -18,8 +18,12 @@ import com.xjblx.po.QuestionnaireCreateQueryVo;
  * @version 
  */
 public interface QuestionnaireCreateCustomMapper {
-	List<QuestionnaireCreate> selectQuestionnaireByName(String questionnair_name) throws Exception;
+	List<QuestionnaireCreate> selectQuestionnaireByName(String username, String questionnair_name) throws Exception;
 	
 	String selectQuestionnaireChoiceByQuestion(String questionnair_question)throws Exception;
 	
+	int updateByPrimaryKeySelective(QuestionnaireCreate record);
+	
+	int deleteQuestionnaireCreate(String username, String questionnair_name)throws Exception;
+
 }

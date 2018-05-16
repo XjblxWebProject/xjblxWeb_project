@@ -12,6 +12,6 @@ package com.xjblx.po;
  * @date	
  * @version 
  */
-public class QuestionnaireCreateCustom extends QuestionnaireCreate{
+public class QuestionnaireCreateCustom extends QuestionnaireCreate {
 
 }
