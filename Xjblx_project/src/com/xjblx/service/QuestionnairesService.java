@@ -49,4 +49,6 @@ public interface QuestionnairesService {
 	//用户和问卷一对一对应
 	Questionnaire selectQuestionnaireByUserNameQname(String username, String questionnair_name)throws Exception;
 
+	//
+	public List<QuestionnaireCreate> selectQuestionnaireByName1(String questionnair_name) throws Exception;
 }

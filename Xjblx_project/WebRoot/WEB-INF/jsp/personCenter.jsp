@@ -12,6 +12,7 @@
 		<title>个人中心</title>
 	</head>
 	<body>
+	<form action= "${pageContext.request.contextPath }/addInformation.action" method="post">
 		<div id="banner">
 			<img src="img/logo2.png"/>
 			<ul class="choose">
@@ -24,33 +25,34 @@
 		</div>
 		<div id="message">
 			<div id="table_message">
-			<form action= "${pageContext.request.contextPath }/addInformation.action" method="post">
-				<table border="0" cellspacing="50" cellpadding="">
+			
+				<table border="0" cellspacing="25" cellpadding="">
 					<tr>
 						<td>昵称：</td>
-						<td><input type="text" name="usershowname" id="userShouName" value="${sessionScope.usershowname }" /></td>
-						<td width="120px" style="color:red;font-size:x-small;">${requestScope.usershownameMistake }</td>
+						<td style="color: red;"><input type="text" name="usershowname" id="userShouName" value="${sessionScope.usershowname }" />*</td>
+						<td class="warnning">${requestScope.usershownameMistake }</td>
 					</tr>
 					<tr>
 						<td>电话：</td>
-						<td><input type="text" name="userphone" id="userPhone" value="${sessionScope.userphone }" /></td>
-						<td width="120px" style="color:red;font-size:x-small;">${requestScope.userphoneMistake }</td>
+						<td style="color: red;"><input type="text" name="userphone" id="userPhone" value="${sessionScope.userphone }" />*</td>
+						<td class="warnning"></td>
 					</tr>
 					<tr>
 						<td>电子邮件：</td>
-						<td><input type="text" name="useremail" id="UserEmail" value="${sessionScope.useremail }" /></td>
-						<td width="120px" style="color:red;font-size:x-small;">${requestScope.useremailMistake }</td>
+						<td style="color: red;"><input type="text" name="useremail" id="UserEmail" value="${sessionScope.useremail }" />*</td>
+						<td class="warnning"></td>
 					</tr>
 				</table>
-				<table border="0" cellspacing="50" cellpadding="">
+				<table border="0" cellspacing="0" cellpadding="">
 					<tr>
 						<td><input type="submit" name="" id="sub" value="保存" /></td>
 						<td></td>
 					</tr>
 				</table>
-				</form>
+				
 			</div>
 			
 		</div>
+		</form>
 	</body>
 </html>

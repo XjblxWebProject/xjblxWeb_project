@@ -36,12 +36,8 @@
 						<td width="120px" style="color:red;font-size:x-small;">${requestScope.useremailMistake }</td>
 					</tr>
 				</table>
-				<table border="0" cellspacing="50" cellpadding="">
-					<tr>
-						<td><input type="submit" name="" id="sub" value="保存" /></td>
-						<td></td>
-					</tr>
-				</table>
+				<input type="submit" name="" id="sub" value="保存" />
+			
 				</form>
 			</div>
 			

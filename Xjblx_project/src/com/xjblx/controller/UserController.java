@@ -85,7 +85,61 @@ public class UserController {
 		}
 		
 	}
-	
+	//修改密码
+		@RequestMapping(value="/changePasswordCheck2",method={RequestMethod.POST,RequestMethod.GET})
+		public String changePasswordAndCheck2(Model model, HttpServletRequest requset, HttpSession session, String userphone, String newpassword, String username, String passwordconfirm,UserCustom userCustom) throws Exception{
+			
+
+			if(username.equals("") || username == null){
+				
+				model.addAttribute("usernameMistake", "用户名不能为空");
+				return "forward:changePassword2.action";
+			
+			}else if(newpassword.equals("") || newpassword == null){
+				
+				model.addAttribute("newpasswordMistake", "新的密码不能为空");
+				return "forward:changePassword2.action";
+			
+			}else if(passwordconfirm.equals("") || passwordconfirm == null){
+				
+				model.addAttribute("passwordconfirmMistake", "再次输入密码不能为空");
+				return "forward:changePassword2.action";
+				
+			}else if(userphone.equals("") || userphone == null){
+				
+				model.addAttribute("phoneMistake", "手机号不能为空");
+				return "forward:changePassword2.action";
+				
+			}else{
+				
+				User user = usersService.selectUsername(username, userCustom);
+				if(user == null){
+					
+					model.addAttribute("usernameMistake", "用户名不存在");
+					return "forward:changePassword2.action";
+					
+				}else if(newpassword.length() < 6){
+					model.addAttribute("newpasswordMistake", "密码不能少于6位");
+					return "forward:changePassword2.action";
+				}else if(!newpassword.equals(passwordconfirm)){
+					
+					model.addAttribute("passwordconfirmMistake", "两次输入的密码不同");
+					return "forward:changePassword2.action";
+					
+				}else if(!user.getUserphone().equals(userphone)){
+					
+					model.addAttribute("phoneMistake", "手机号输入错误");
+					return "forward:changePassword2.action";
+					
+				}else{
+					user.setPassword(newpassword);
+					usersService.updateUser(username, user);
+					session.setAttribute("username", username);
+					return "login";
+				}
+			}
+			
+		}
 	/**
 	 * @author 张子阳
 	 * @version 1.1.2

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.xjblx.mapper.QuestionnaireMapper;
 import com.xjblx.po.Questionnaire;
@@ -39,13 +40,13 @@ public class QuestionController {
 	 * @return
 	 * @throws Exception
 	 */
-	//用户展示问卷的首页
 	@RequestMapping(value="/showQuestionnairewithuser",method={RequestMethod.POST,RequestMethod.GET})
 	public String showQuestionnaire(Model model, HttpSession session, HttpServletRequest request) throws Exception{
 		String username = (String)session.getAttribute("username");
 		List<Questionnaire> questionnaireList = questionnairesService.selectQuestionnaireByUserName(username);
-		model.addAttribute("questionnaireByUserList", questionnaireList);
-		session.setAttribute("questionnaireByUserList", questionnaireList);
+		String questionnaireList1 = JSONArray.fromObject(questionnaireList).toString();
+		model.addAttribute("questionnaireByUserList", questionnaireList1);
+		
 		return "showquestionwithuser";
 	}
 	//删除用户的问卷
@@ -105,12 +106,9 @@ public class QuestionController {
 			questionnaire.setCreatedate(createdate);
 			questionnairesService.insertQuestionnaire(questionnair_name, questionnaire);
 			session.setAttribute("questionnair_name", questionnair_name);
-			return "questionCreate";
+			return "edit";
 		}else if(questionnaire2.getQuestionnairName().equals(questionnair_name)){
-			
-			/**
-			 * 有问题
-			 */
+		
 			model.addAttribute("questionnairnameMistake", "问卷名不能重复");
 			return "forward:questionnaire.action";
 		}else {
@@ -122,7 +120,7 @@ public class QuestionController {
 			questionnaire.setCreatedate(createdate);
 			questionnairesService.insertQuestionnaire(questionnair_name, questionnaire);
 			session.setAttribute("questionnair_name", questionnair_name);
-			return "questionCreate";
+			return "edit";
 		}
 		
 		
@@ -149,37 +147,47 @@ public class QuestionController {
 	 * @return
 	 * @throws Exception
 	 */
-	//问题问卷问题和问题选项问题类型插入数据库
-	@RequestMapping(value="/questionCreate",method={RequestMethod.POST,RequestMethod.GET})
-	public String questionCreate(HttpServletRequest request, HttpSession session, String questionnair_question, String questionnair_choice, int questionnair_type) throws Exception{
-		String questionnair_name = (String)session.getAttribute("questionnair_name");
-		String username = (String)session.getAttribute("username");
+	//将问卷的具体题目信息插入数据库 初始化各项值
+		@RequestMapping(value="/questionCreate",method={RequestMethod.POST,RequestMethod.GET})
+		public String questionCreate(HttpServletRequest request, HttpSession session, int number) throws Exception{
+			
+			String username = (String)session.getAttribute("username");
+			String title = (String)session.getAttribute("questionnair_name");
+			
+			QuestionnaireCreate questionnaireCreate = new QuestionnaireCreate();
+			questionnaireCreate.setQuestionnairName(title);
+			
+			questionnaireCreate.setUsername(username);
 		
-		QuestionnaireCreate questionnaireCreate = new QuestionnaireCreate();
-		
-		String[]choicenum = questionnair_choice.split(",");
-		
-		StringBuilder eachchoicenum = new StringBuilder();
-		for(int i = 0; i < choicenum.length; i ++){
-			eachchoicenum.append("0");
-			if(i == choicenum.length-1){
-				continue;
+			
+			for(int i=1;i<=number;i++){ //循环每一道题
+				String question = (String)request.getParameter("question"+i);  //问题
+				String[] options = (String[])request.getParameterValues("option"+i); //选项
+				String strOptions="";
+				String eachchoicenum = "";
+				for(int j=0;j<options.length;j++){  //把答案规范城以逗号分隔的字符串
+					strOptions+=options[j];
+					eachchoicenum+="0";
+					if(j==options.length-1){
+						continue;
+					}
+					strOptions+=",";
+					eachchoicenum+=",";
+				}
+				System.out.println(strOptions);
+				System.out.println(eachchoicenum);
+				questionnaireCreate.setQuestionnairQuestion(question);
+				questionnaireCreate.setQuestionnairChoice(strOptions);
+				questionnaireCreate.setQuestionnairType(1);
+				questionnaireCreate.setChoicenum(options.length);
+				questionnaireCreate.setEachchoicenum(eachchoicenum.toString());
+				questionnairesService.insertQuestionnaireCreate(username, questionnaireCreate);
+				session.setAttribute("questionnaireCreate", questionnaireCreate);
+				
 			}
-			eachchoicenum.append(",");
+			return "redirect:showQuestionnairewithuser.action";
+			
 		}
-		questionnaireCreate.setUsername(username);
-		questionnaireCreate.setQuestionnairName(questionnair_name);
-		questionnaireCreate.setQuestionnairQuestion(questionnair_question);
-		questionnaireCreate.setQuestionnairChoice(questionnair_choice);
-		questionnaireCreate.setQuestionnairType(questionnair_type);
-		questionnaireCreate.setChoicenum(choicenum.length);
-		questionnaireCreate.setEachchoicenum(eachchoicenum.toString());
-		questionnairesService.insertQuestionnaireCreate(username, questionnaireCreate);
-		
-		session.setAttribute("questionnaireCreate", questionnaireCreate);
-		return "redirect:showQuestionnaire.action";
-		
-	}
 	/**
 	 * 
 	 * @param model
@@ -188,17 +196,19 @@ public class QuestionController {
 	 * @return
 	 * @throws Exception
 	 */
-	//展示添加好问题的问卷
-	@RequestMapping(value="/showQuestionnaire",method={RequestMethod.POST,RequestMethod.GET})
-	public String showQuestionnaire(Model model, HttpServletRequest request, HttpSession session) throws Exception{
-		String questionnair_name = (String)session.getAttribute("questionnair_name");
-		String username = (String)session.getAttribute("username");
-		List<QuestionnaireCreate> questionnaireList = questionnairesService.selectQuestionnaireByName(username, questionnair_name);
-		String questionnaireList1 = JSONArray.fromObject(questionnaireList).toString();
-		model.addAttribute("questionnaireList", questionnaireList1);
+	//读取问卷的具体信息到问卷展示页面
+		@RequestMapping(value="/showQuestionnaire",method={RequestMethod.POST,RequestMethod.GET})
+		public ModelAndView showQuestionnaire(Model model, HttpServletRequest request, HttpSession session ,String questionnairName) throws Exception{
 		
-		return "showquestion";
-	}
+			List<QuestionnaireCreate> questionnaireList = questionnairesService.selectQuestionnaireByName1(questionnairName);
+			System.out.println(questionnairName+"+++++++++++++++++++");
+			String questionnaireList1 = JSONArray.fromObject(questionnaireList).toString();
+			System.out.println(questionnaireList1);
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("aSurvey"); //预览
+			mav.addObject("questionnaireList",questionnaireList1);
+			return mav;
+		}
 	/**
 	 * 
 	 * @param session
@@ -227,7 +237,32 @@ public class QuestionController {
 		return "success";
 
 	}
-	
+	//读取问卷信息到问卷调研页面  
+		@RequestMapping(value="/showQuestionDetails",method={RequestMethod.POST,RequestMethod.GET})
+		public ModelAndView getQuestionDetails(Model model, HttpServletRequest request, HttpSession session,String questionnairName) throws Exception{
+			System.out.println(questionnairName);
+			List<QuestionnaireCreate> questionnaireList = questionnairesService.selectQuestionnaireByName1(questionnairName);
+			String questionnaireList1 = JSONArray.fromObject(questionnaireList).toString();
+			System.out.println(questionnaireList1);
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("statistics"); //返回给调研页面
+			mav.addObject("questionnaireList",questionnaireList1);
+			return mav;
+		}
+		
+		//读取问卷的具体信息到填写界面
+		@RequestMapping(value="/showQuestionnaireToW",method={RequestMethod.POST,RequestMethod.GET})
+		public ModelAndView showQuestionnaireToW(Model model, HttpServletRequest request, HttpSession session ,String questionnairName) throws Exception{
+		
+			List<QuestionnaireCreate> questionnaireList = questionnairesService.selectQuestionnaireByName1(questionnairName);
+			System.out.println(questionnairName+"+++++++++++++++++++");
+			String questionnaireList1 = JSONArray.fromObject(questionnaireList).toString();
+			System.out.println(questionnaireList1);
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("showquestion");
+			mav.addObject("questionnaireList",questionnaireList1);
+			return mav;
+		}
 	
 	
 	

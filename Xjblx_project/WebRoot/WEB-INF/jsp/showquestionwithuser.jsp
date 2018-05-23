@@ -11,13 +11,47 @@
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/My.css"/>
 		<script src="${pageContext.request.contextPath }/js/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
 		<script src="${pageContext.request.contextPath }/js/aboutme.js" type="text/javascript" charset="utf-8"></script>
-		<script src="${pageContext.request.contextPath }/js/My.js" type="text/javascript" charset="utf-8"></script>
+		<%-- <script src="${pageContext.request.contextPath }/js/My.js" type="text/javascript" charset="utf-8"></script> --%>
 		
 		
 		<title>我的问卷</title>
+	<script type="text/javascript">
+	$(document).ready( function(){
+		var  arr =  eval('${questionnaireByUserList}');//用户的问卷数量
+		var result=arr.length
+		var index;
+		for(index = 0;index < result;index++) {
+
+			
+			$('#showTitle').append('<div id="text" class="text">'+  
+					'<div  class="survey" >'+
+						'<a class="surveyHead" href="${pageContext.request.contextPath }/showQuestionnaire.action?questionnairName='+arr[index].questionnairName+'">'+
+						'<span>'+index+1+"."+arr[index].questionnairName+		
+						'</span>'+
+						'</a>'+
+						'<div class="surveyDescribe">'+
+						arr[index].createdate+
+						'<input type="button" class="create1" id="create" value="发布问卷" />'+
+						'<input type="button" class="create2" id="create" value="统计问卷" />'+		
+						'<input type="button" class="create3" id="create" value="删除问卷" />'	+
+						'</div>'+
+					'</div>'+
+				'</div>');
+			$("#showTitle .survey").css("display","block"); 
+			
+			$(".create1:last").attr("onclick",'window.location.href="${pageContext.request.contextPath }/showQuestionnaireToW.action?questionnairName='+arr[index].questionnairName+'"');
+			$(".create2:last").attr("onclick",'window.location.href="${pageContext.request.contextPath }/showQuestionDetails.action?questionnairName='+arr[index].questionnairName+'"');
+			
+			$(".surveyDescribe input:last").attr("onclick",'window.location.href="${pageContext.request.contextPath }/delectQuestionnaire.action?id='+arr[index].id+'"');
+			
+		}
+	
+	})
+	</script>
 	</head>
+	
 	<body id="main">
-		<div id="banner">
+	<div id="banner">
 			<img src="img/logo2.png"/>
 			<ul class="choose">
 				<li><a href="${pageContext.request.contextPath }/showQuestionnairewithuser.action">我的问卷</a></li>
@@ -30,29 +64,16 @@
 				</li>
 			</ul>
 		</div>
-		<div id="showTitle">
-			<div id="show">
-				<table>
-			 	 <c:forEach items="${questionnaireByUserList }" var="list">
-			 		<tr>
-		 				<td >${list.id }</td>
-			 			<td>${list.questionnairName }</td>
-			 			<td>${list.createdate }</td>
-			 			<td><a href="${pageContext.request.contextPath }/delectQuestionnaire.action?id=${list.id}">删除问卷</a></td>
-			 		</tr>
-		
-		 		 </c:forEach>
-		 		 
-	 			</table>
-			<a href="${pageContext.request.contextPath }/questionnaire.action">添加问卷</a>
-			</div>
-			
+	<div id="showTitle">
+		<div id="show">
+			<pre>
+				<a id="createQuestion" href="${pageContext.request.contextPath }/questionnaire.action" >添加问卷</a>
+				
+			</pre>
 		</div>
 		
-			<div id="survey" class="survey">
-				<a id="surveyHead"></a>
-				<div id="surveyDescribe"></div>  <!-- 问卷介绍 -->
-                                             
-			</div>
+	</div>
+	
+		
 	</body>
 </html>

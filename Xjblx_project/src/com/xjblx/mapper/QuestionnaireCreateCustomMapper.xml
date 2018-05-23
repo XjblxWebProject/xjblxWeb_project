@@ -8,16 +8,22 @@
     <result column="questionnair_choice" property="questionnairChoice" jdbcType="VARCHAR" />
     <result column="questionnair_type" property="questionnairType" jdbcType="INTEGER" />
   </resultMap>
+  <select id="selectQuestionnaireByName1" parameterType="java.lang.String" resultMap="BaseResultMap">
+		SELECT * FROM questionnaire_create WHERE questionnair_name = #{questionnaireCreateCustom.questionnairName}
+
+	</select>
+  
+  <!-- 通过用户名和问卷名搜索到问卷的问题选项信息 -->
 	<select id="selectQuestionnaireByName"   resultMap="BaseResultMap">
 		SELECT * FROM questionnaire_create WHERE username = #{0} and questionnair_name = #{1}
 		
 	</select>
-	
+	<!-- 通过问卷中的问题查到这个问卷中的对应的选项-->
 	<select id="selectQuestionnaireChoiceByQuestion" parameterType="java.lang.String" resultType="java.lang.String">
 		SELECT questionnair_choice FROM questionnaire_create WHERE questionnair_question= #{questionnaireCreateCustom.questionnairQuestion} 
 	
 	</select>
-	
+	<!-- 更新-->
 	<update id="updateByPrimaryKeySelective" parameterType="com.xjblx.po.QuestionnaireCreate" >
     update questionnaire_create
     <set >
@@ -44,7 +50,7 @@
     questionnair_question = #{questionnairQuestion,jdbcType=VARCHAR} 
   </update>
 	
-	
+	<!-- 删除问卷问题表中的问题、选项等信息-->
 	<delete id="deleteQuestionnaireCreate" >
 		delete from questionnaire_create where username = #{0} and questionnair_name = #{1}
 	

@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/showques.css"/>
 <script type="text/javascript" src=js/jquery-1.8.3.js></script>
 <title>展示问卷</title>
 </head>
@@ -18,7 +19,7 @@ jQuery(document).ready(function($) {
 		for(var i = 0;i<arr.length;i++){
 			var choiceString=arr[i].questionnairChoice
 			var choicearr = choiceString.split(',');
-			var thHTML = '<tr><th>'+arr[i].questionnairQuestion+'</th></tr>'
+			var thHTML = '<tr><th>'+arr[i].questionnairQuestion+'</th></tr>' //问卷标题
 			$("#tab").append(thHTML)
 			for(var j=0 ;j<choicearr.length;j++){
 				var tdHTML='<tr><td>'+'<input type="radio" name="choice'+i+'"  value="'+i+'-'+j+'">'+choicearr[j]+'</td></tr>'
@@ -47,13 +48,23 @@ jQuery(document).ready(function($) {
 </script>
 
 <body>
+
+<div id="banner">
+			<img src="img/logo2.png"/>
+			<!-- </div>
+			<div style="font-size: x-large;text-align: center;">问卷标题</div> -->
 <p></p>
 <form id="form" action="${pageContext.request.contextPath }/countEachNum.action" method="post">
-<table border="1" id="tab">
+
+<table border="0" id="tab">
 		
 </table>
 
+			
+
+		
 <input type="hidden" name="table_data" id="hidTD" value="123"/>
+<br/><br/><br/>
 <input type="submit" name="" id="input_bt" value="提交" />
 </form>
 </body>

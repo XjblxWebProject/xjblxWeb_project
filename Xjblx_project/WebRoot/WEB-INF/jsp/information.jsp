@@ -6,39 +6,53 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/register.css"/>
-		<script src="${pageContext.request.contextPath }/js/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
-		<script src="${pageContext.request.contextPath }/js/register.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/aboutme.css"/>
+		<script src="${pageContext.request.contextPath }/js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="${pageContext.request.contextPath }/js/aboutme.js" type="text/javascript" charset="utf-8"></script>
 		<title>注册</title>
 	</head>
-	<body id="register">
-		<div id="content">
-			<div id="name">
-				<br /><br />
-				<font size="5">问卷调查系统</font>
-			</div>
-			<div id="input_register">
-			<form action="${pageContext.request.contextPath }/addInformation.action" method="post">
-				<table border="0" cellspacing="20" cellpadding="0">
-					<tr>
-						<td>昵称：</td>
-						<td><input type="text" name="usershowname" id="userShowName" placeholder="请输入昵称"  />${requestScope.usernameMistake }</td>
+	<body>
+	<form action= "${pageContext.request.contextPath }/addInformation.action" method="post">
+		<div id="banner">
+			<img src="img/logo2.png"/>
+			<ul class="choose">
+				<li><a href="${pageContext.request.contextPath }/showQuestionnairewithuser.action">我的问卷</a></li>
+				<li>
+					<a href="#" id="myaccout"><font>${sessionScope.username }</font></a>
+					
+				</li>
+			</ul>
+		</div>
+		<div id="message">
+			<div id="table_message">
+			
+				<table border="0" cellspacing="25" cellpadding="">
+					<tr >
+						<td >昵称：</td>
+						<td style="color: red;"><input type="text" name="usershowname" id="userShouName" value="${sessionScope.usershowname }" />*</td>
+						<td  class="warnning">${requestScope.usershownameMistake }</td>
 					</tr>
 					<tr>
 						<td>电话：</td>
-						<td><input type="password" name="userphone" id="userphone" placeholder="请输入电话" />${requestScope.passwordMistake }</td>
+						<td style="color: red;"><input type="text" name="userphone" id="userPhone" value="${sessionScope.userphone }" />*</td>
+						<td class="warnning">${requestScope.userphoneMistake }</td>
 					</tr>
 					<tr>
-						<td>邮箱：</td>
-						<td><input type="text" name="useremail" id="userEmail" placeholder="请输入电子邮箱" />${requestScope.passwordconfirmMistake }</td>
+						<td>电子邮件：</td>
+						<td style="color: red;"><input type="text" name="useremail" id="UserEmail" value="${sessionScope.useremail }" />*</td>
+						<td class="warnning">${requestScope.useremailMistake }</td>
 					</tr>
-					
 				</table>
-				<input type="submit" name="submit" id="input_bt" value="前往登录" />
+				<table border="0" cellspacing="0" cellpadding="">
+					<tr>
+						<td><input type="submit" name="" id="sub" value="保存" /></td>
+						<td></td>
+					</tr>
+				</table>
 				
-			</form>
 			</div>
+			
 		</div>
-		
+		</form>
 	</body>
 </html>

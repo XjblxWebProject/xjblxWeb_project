@@ -1,19 +1,38 @@
 body {
 	background-color: rgb(247,247,250);
 }
-#surveyHead {
-	font-size:x-large ;
-	color:  #f0f0f0;
-	background-color: #0095DA;
+.surveyHead {
+	/*margin-top: 10px;*/
+	font-size:large ;
+	/*width: 750px;*/
+	height: 40px;
+	background-color: #e6f0fa;
+	
+	
 }
-#surveyDescribe {
+.title {
+	background-color: ;
+}
+.surveyDescribe {
+	
+	height: 40px;
 	font-size: small;
 	color: #000000;
+	z-index=1000;
 }
 .survey {
-	
+	margin: 0px auto 0px auto;
+	width: 75%;
 	display: none;	
+	
 }
+a {
+	border-radius: 8px;
+	border: solid;
+	border-color: #e6f0fa;
+}
+
+
 
 #showTitle {
 	background-color: white;
@@ -22,3 +41,17 @@ body {
 	width: 1100px;
 	margin: 0px auto 0px auto;
 }
+
+#create{
+	background-color: rgb(163,131,131);
+    border: 1px solid rgb(163,131,131);
+    color: white;
+    font-size: 12px;
+    box-sizing: content-box;
+    /* padding: 0px 22px; */
+    height: 20px;
+    width: 80px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+

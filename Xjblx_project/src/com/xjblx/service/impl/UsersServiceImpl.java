@@ -17,21 +17,21 @@ public class UsersServiceImpl implements UsersService{
 	@Autowired
 	private UserMapper userMapper;
 	
-	
+	//用户的注册
 	@Override
 	public void insertUserInformation(String username, UserCustom userCustom) throws Exception {
 		// TODO Auto-generated method stub
 		userMapper.insert(userCustom);
 	}
 
-	
+	//用户登录
 	@Override
 	public void loginUser(String username) throws Exception {
 		// TODO Auto-generated method stub
 		userMapper.selectByPrimaryKey(username);
 	}
 
-	
+	//查询数据库中是否已经存在此用户名
 	@Override
 	public User selectUsername(String username, UserCustom userCustom) throws Exception {
 		// TODO Auto-generated method stub
@@ -39,7 +39,7 @@ public class UsersServiceImpl implements UsersService{
 	}
 	
 	
-	
+	//输入用户的信息
 	@Override
 	public void updateUser(String username, User user) throws Exception {
 		// TODO Auto-generated method stub
@@ -47,7 +47,7 @@ public class UsersServiceImpl implements UsersService{
 	}
 
 
-	
+	 //展示用户具体信息的
 	@Override
 	public User selectUserByUsername(String username) throws Exception {
 		// TODO Auto-generated method stub

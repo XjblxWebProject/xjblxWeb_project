@@ -9,6 +9,7 @@
 <title>成功提示</title>
 </head>
 <body>
+Success!!!!!!
 <c:forEach items="${listUser }" var="user">
 <tr>	
 	

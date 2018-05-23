@@ -1,22 +1,31 @@
+body {
+	height: 100%;
+}
 #message {
     background-image:url(../img/search_bg.jpeg);
     background-size: 100%;
     margin: 0 auto;
-
+	height: 630px;
+	padding-top: 50px;
 }
 
-#table_message {
-	width: 100%;
-	height:630px;
-    text-align: center;
-    
-}
 
 #table_message table {
 	margin: auto;
+	
+}
+#table_message {
+    text-align: center;
+    margin:0 auto; 
+	color: #000;
+	background-color: rgba(255,255,255,0.65);
+	width: 500px;
+	height: 350px;
+	border-radius:25px;/*圆角*/
+	
 }
 #banner {
-	height: 80px;
+	height: 55px;
 	background-color: #edeae4;
 	display: flex;
 	flex-direction: row;
@@ -32,35 +41,41 @@
 	padding: 10px 20px;
 }
 
-#table_message table tr td input {
+#table_message table tr {
 	border-radius:20px;/*圆角*/
 	text-indent:6px;
-	width: 300px;
-	font-size: x-large;
+	width: 130px;
+	
+	/*font-size: large;*/
+}
+#table_message input{
+	width: 140px;
+	border-radius:10px;
 }
 #table_message table tr td {
-	font-size: x-large;
-	color: #fff;
+	/*font-size: large;*/
+	color: #000;
+	width:200px;
 }
 #sub {
 	border-radius:20px;/*圆角*/
-	/*margin-top: 30px;*/
-	font-size: x-large;
+	/*  margin-top: 0px; */ 
+	/*font-size: large;*/
 	width: 300px;
 	background-color: #ff9800;
 }
 a:link { 
-	font-size: x-large; 
-	color: #000000; 
+	font-size: large; 
+	color: #000; 
 	text-decoration: none; 
 } 
 a:visited { 
-	font-size: x-large; 
-	color: #000000; 
+	font-size: large; 
+	color: #000; 
 	text-decoration: none; 
 } 
 a:hover { 
-	font-size: x-large; 
+	font-size: large; 
 	color: #999999; 
 	text-decoration: underline; 
 } 
@@ -69,5 +84,18 @@ a:hover {
 	display: none;
 	position: absolute;
 	text-decoration:none;
-	padding:0px 5px 5px 5px;
+	padding:15px 0px 0px 0px;
 }
+#about a {
+	color: #000;	
+}
+
+.warnning {
+	color: red;
+	font-size: x-small;
+}
+.input_message {
+	color: red;
+}
+
+

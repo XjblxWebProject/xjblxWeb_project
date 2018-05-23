@@ -4,4 +4,8 @@ $(document).ready(function(){
 			$('#about').toggle();
 		});
 	});
+	function load() {
+		document.getElementById('#table_message').css("height:",document.body.clientHeight);
+	}
+
 });

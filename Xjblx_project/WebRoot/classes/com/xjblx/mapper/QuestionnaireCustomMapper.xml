@@ -8,18 +8,19 @@
     <result column="createdate" property="createdate" jdbcType="VARCHAR" />
     <result column="naire_url" property="naireUrl" jdbcType="VARCHAR" />
   </resultMap>
-	
+	<!-- 显示该用户的所有问卷 -->
 	<select id="selectQuestionnaireByUserName" resultMap="BaseResultMap" parameterType="java.lang.String" >
     	SELECT * FROM questionnaire WHERE  username = #{questionnaireCustom.username}
     
   	</select>
-  	
+  	<!-- 返回问卷类的搜索 -->
   	<select id="selectQuestionnaireByUsernameToqu" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select * from questionnaire where username = #{username,jdbcType=VARCHAR}
   	</select>
-	
+  	
+	<!-- 用户和问卷一对一对应-->
 	<select id="selectQuestionnaireByUserNameQname"   resultMap="BaseResultMap">
-		SELECT * FROM questionnaire WHERE username = #{0} and questionnair_name = #{1}
-		
+		SELECT * FROM questionnaire WHERE username = #{0} and questionnair_name = #{1}	
 	</select>
+	
 </mapper>
